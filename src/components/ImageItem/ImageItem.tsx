@@ -7,7 +7,7 @@ interface Props {
 }
 export const ImageItem: FC<Props> = memo(({ image }) => {
   return (
-    <div>
+    <div className="gallery__image-container">
       <Link
         to={`/photos/${image.id}`}
         className="gallery__image-link"

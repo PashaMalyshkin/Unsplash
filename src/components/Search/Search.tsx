@@ -13,7 +13,7 @@ export const Search: FC = memo(() => {
   const navigate = useNavigate();
 
   const query = searchParams.get('query') || '';
-  const page = searchParams.get('page') || '';
+  const page = searchParams.get('page') || '1';
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

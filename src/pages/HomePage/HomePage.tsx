@@ -17,7 +17,7 @@ export const HomePage = () => {
       const imagesFromServer = await getImages(+page);
 
       setImages(imagesFromServer);
-    } catch {
+    } catch (e) {
       throw new Error(FetchLoadErrors.UNABLE_LOAD);
     }
   };

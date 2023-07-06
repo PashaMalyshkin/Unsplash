@@ -12,8 +12,15 @@
     height: 32px;
     border: 1px solid #47485d;
     border-radius: 4px;
-    color: black;
+    color: #fff;
+    background-color: #47485d;
     background-size: cover;
+    text-decoration: none;
+
+    &.is-active {
+      background-color: #eeeeee;
+      color: #47485d;
+    }
   }
 
   &__button-next {
