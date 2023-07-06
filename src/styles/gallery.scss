@@ -16,4 +16,12 @@
     position: fixed;
     top: 50%;
   }
+
+  &__dropdown {
+    display: none;
+
+    @include onDesktop {
+      display: block;
+    }
+  }
 }

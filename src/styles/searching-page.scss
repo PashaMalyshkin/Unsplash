@@ -9,5 +9,15 @@
       background-color: #dcdada;
       color: #47485d;
     }
+
+    &__form {
+      gap: 20px;
+    }
+  }
+
+  & .logo {
+    @include onTablet {
+      display: block;
+    }
   }
 }

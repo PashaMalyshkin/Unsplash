@@ -1,9 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Image } from '../../types/Image';
 import { getOneImage } from '../../api/images';
 import { FetchLoadErrors } from '../../utils/FetchLoadErrors';
-// import { CloseButton } from '../CloseButton';
 
 export const ImageModal: FC = () => {
   const { pathname } = useLocation();
@@ -54,6 +53,7 @@ export const ImageModal: FC = () => {
             {`Views: ${image.views}`}
           </div>
         </div>
+
       </div>
 
       <img
@@ -61,6 +61,18 @@ export const ImageModal: FC = () => {
         alt={image.alt_description}
         className="modal__image"
       />
+
+      <div className="modal__tags">
+        {image.tags.slice(0, 5).map(tag => (
+          <Link
+            key={tag.title}
+            to={`/collection/${tag.title}`}
+            className="modal__tag-link"
+          >
+            {tag.title}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

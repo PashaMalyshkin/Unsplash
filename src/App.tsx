@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { ImageModal } from './components/ImageModal';
 import { SearchPage } from './pages/SearchPage';
 import { HomePage } from './pages/HomePage';
+import { CollectionPage } from './pages/CollectionPage';
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,10 @@ const App: React.FC = () => {
         <Route path="/photos">
           <Route index element={<HomePage />} />
           <Route path=":id" element={<ImageModal />} />
+        </Route>
+
+        <Route path="/collection" element={<CollectionPage />}>
+          <Route path=":tag" element={<CollectionPage />} />
         </Route>
 
         <Route path="/search" element={<SearchPage />}>

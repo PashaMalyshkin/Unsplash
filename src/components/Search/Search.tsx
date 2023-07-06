@@ -1,10 +1,11 @@
 import React, {
   FC, FormEvent, memo, useEffect, useState,
 } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { SearchInput } from '../SearchInput';
 import { searchImages } from '../../api/images';
 import { getSearchWith } from '../../utils/searchHelper';
+import { Logo } from '../Logo';
 
 export const Search: FC = memo(() => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -18,7 +19,7 @@ export const Search: FC = memo(() => {
     event.preventDefault();
 
     try {
-      await searchImages(searchQuery, Number(page));
+      await searchImages(query, Number(page));
 
       if (query !== searchQuery) {
         setSearchParams(getSearchWith(
@@ -45,6 +46,13 @@ export const Search: FC = memo(() => {
         className="search__form"
         onSubmit={handleSubmit}
       >
+        <Link
+          to="/"
+          className="logo"
+        >
+          <Logo />
+        </Link>
+
         <SearchInput
           query={searchQuery}
           onSearch={setSearchQuery}
