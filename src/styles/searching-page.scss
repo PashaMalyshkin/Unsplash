@@ -2,12 +2,12 @@
   & .search {
     width: 100%;
     height: 60px;
-    background-color: #47485d;
+    background-color: $dark-c;
     padding: 10px 40px;
 
     &__button {
-      background-color: #dcdada;
-      color: #47485d;
+      background-color: $search-bg-color;
+      color: $dark-c;
     }
 
     &__form {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { searchImages } from '../../api/images';
 import { Gallery } from '../../components/Gallery';
 import { SearchResponse } from '../../types/SearchResponse';
@@ -40,13 +40,13 @@ export const CollectionPage = () => {
     <div className="collection-page">
       <h1>Collection</h1>
 
-      <button
-        type="button"
+      <Link
+        to="/"
         className="collection-page__button"
         title="Go Home"
       >
         Back to Home
-      </button>
+      </Link>
 
       <Gallery
         images={images.results}

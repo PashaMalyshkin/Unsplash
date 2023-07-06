@@ -10,16 +10,16 @@
     justify-content: center;
     min-width: 32px;
     height: 32px;
-    border: 1px solid #47485d;
+    border: 1px solid ;
     border-radius: 4px;
-    color: #fff;
-    background-color: #47485d;
+    color: $white-c;
+    background-color: $dark-c;
     background-size: cover;
     text-decoration: none;
 
     &.is-active {
-      background-color: #eeeeee;
-      color: #47485d;
+      background-color: $link-color;
+      color: $dark-c;
     }
 
     &.disabled {
