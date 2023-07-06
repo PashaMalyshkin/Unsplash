@@ -30,13 +30,15 @@ export const Pagination: FC = memo(() => {
     pagesToShow = pageCounts.slice(0);
   }
 
-  // const isFirstPage = currentPage === 1;
-  // const isLastPage = currentPage === pageCounts.length;
+  const isFirstPage = currentPage === 1;
+  const isLastPage = currentPage === pageCounts.length;
 
   return (
     <div className="pagination">
       <Link
-        className="pagination__button-prev pagination__button"
+        className={cn('pagination__button-prev pagination__button', {
+          disabled: isFirstPage,
+        })}
         to={{
           search: getSearchWith(
             searchParams, { page: (currentPage - 1).toString() },
@@ -45,24 +47,28 @@ export const Pagination: FC = memo(() => {
         onClick={() => window.scrollTo(0, 0)}
       >
       </Link>
-      {pagesToShow.map(p => (
-        <Link
-          key={p}
-          className={cn('pagination__button', {
-            'is-active': currentPage === p,
-          })}
-          to={{
-            search: getSearchWith(
-              searchParams, { page: (currentPage).toString() },
-            ),
-          }}
-          onClick={() => window.scrollTo(0, 0)}
-        >
-          {p}
-        </Link>
-      ))}
+      <div className="pagination__control">
+        {pagesToShow.map(p => (
+          <Link
+            key={p}
+            className={cn('pagination__button', {
+              'is-active': currentPage === p,
+            })}
+            to={{
+              search: getSearchWith(
+                searchParams, { page: (p).toString() },
+              ),
+            }}
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            {p}
+          </Link>
+        ))}
+      </div>
       <Link
-        className="pagination__button-next pagination__button"
+        className={cn('pagination__button-next pagination__button', {
+          disabled: isLastPage,
+        })}
         to={{
           search: getSearchWith(
             searchParams, { page: (currentPage + 1).toString() },

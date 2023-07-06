@@ -38,12 +38,15 @@ export const SearchPage = () => {
   return (
     <section className="searching-page">
       <Search />
-
-      <Gallery
-        images={images.results}
-        columnsCount={columnsCount}
-        onChangeColumn={setColumnsCount}
-      />
+      {images.results.length ? (
+        <Gallery
+          images={images.results}
+          columnsCount={columnsCount}
+          onChangeColumn={setColumnsCount}
+        />
+      ) : (
+        <h1>Nothing was found</h1>
+      )}
     </section>
   );
 };
