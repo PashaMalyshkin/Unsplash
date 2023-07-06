@@ -3,8 +3,8 @@ import { Image } from '../types/Image';
 import { SearchResponse } from '../types/SearchResponse';
 
 const apiKey = process.env.REACT_APP_ACCESS_KEY;
-const photo_url = `photos?client_id=${apiKey}`;
-const search_url = `search/photos?&client_id=${apiKey}`;
+const photo_url = `photos?client_id=${apiKey}&count=30`;
+const search_url = `search/photos?&client_id=${apiKey}&count=30`;
 
 export const getImages = (page: number) => {
   return client.get<Image[]>(`${photo_url}&page=${page}`);

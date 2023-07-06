@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Image } from '../../types/Image';
 import { getOneImage } from '../../api/images';
+import { FetchLoadErrors } from '../../utils/FetchLoadErrors';
 // import { CloseButton } from '../CloseButton';
 
 export const ImageModal: FC = () => {
@@ -13,7 +14,7 @@ export const ImageModal: FC = () => {
 
       setImage(imageFromServer);
     } catch {
-      throw new Error('Unable to load one image');
+      throw new Error(FetchLoadErrors.UNABLE_LOAD_ONE);
     }
   };
 

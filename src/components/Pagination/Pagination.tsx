@@ -2,45 +2,33 @@ import React, { FC, memo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../utils/searchHelper';
 
-interface Props {
-  page: number;
-  onChangePage: (page: number) => void;
-}
-export const Pagination: FC<Props> = memo(({ page, onChangePage }) => {
+export const Pagination: FC = memo(() => {
   const [searchParams] = useSearchParams();
 
-  const handlePrevPage = () => {
-    if (page > 1) {
-      onChangePage(page - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    onChangePage(page + 1);
-  };
+  const page = searchParams.get('page') || '1';
 
   return (
-    <>
+    <div className="pagination">
       <Link
+        className="pagination__button-prev pagination__button"
         to={{
           search: getSearchWith(
-            searchParams, { page: page.toString() },
+            searchParams, { page: (+page - 1).toString() },
           ),
         }}
-        onClick={handlePrevPage}
+        onClick={() => window.scrollTo(0, 0)}
       >
-        Previous
       </Link>
       <Link
+        className="pagination__button-next pagination__button"
         to={{
           search: getSearchWith(
-            searchParams, { page: page.toString() },
+            searchParams, { page: (+page + 1).toString() },
           ),
         }}
-        onClick={handleNextPage}
+        onClick={() => window.scrollTo(0, 0)}
       >
-        Next
       </Link>
-    </>
+    </div>
   );
 });

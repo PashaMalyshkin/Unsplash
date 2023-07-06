@@ -4,33 +4,31 @@ import { Search } from '../../components/Search';
 import { searchImages } from '../../api/images';
 import { Gallery } from '../../components/Gallery';
 import { SearchResponse } from '../../types/SearchResponse';
+import { FetchLoadErrors } from '../../utils/FetchLoadErrors';
 
 export const SearchPage = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
-  const page = searchParams.get('page') || '';
+  const page = searchParams.get('page') || '1';
   const [images, setImages] = useState<SearchResponse | null>(null);
   const [columnsCount, setColumnsCount] = useState(3);
-  const [currentPage, setCurrentPage] = useState(1);
 
   const loadImages = async () => {
-    if (query || page) {
-      const searchedImages = await searchImages(query, currentPage);
+    try {
+      const searchedImages = await searchImages(query, +page);
 
       setImages(searchedImages);
+    } catch {
+      throw new Error(FetchLoadErrors.UNABLE_SEARCH);
     }
   };
 
   useEffect(() => {
-    setCurrentPage(1);
+    searchParams.set('page', '1');
   }, [query]);
 
   useEffect(() => {
-    try {
-      loadImages();
-    } catch {
-      throw new Error('Unable to Search images');
-    }
+    loadImages();
   }, [query, page]);
 
   if (!images) {
@@ -45,8 +43,6 @@ export const SearchPage = () => {
         images={images.results}
         columnsCount={columnsCount}
         onChangeColumn={setColumnsCount}
-        currentPage={currentPage}
-        onChangePage={setCurrentPage}
       />
     </section>
   );

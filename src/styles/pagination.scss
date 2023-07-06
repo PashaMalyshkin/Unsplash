@@ -1,0 +1,26 @@
+.pagination {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 100px;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #47485d;
+    border-radius: 4px;
+    color: black;
+    background-size: cover;
+  }
+
+  &__button-next {
+    background-image: url("../img/navigate_next_FILL0_wght400_GRAD0_opsz48.svg");
+  }
+
+  &__button-prev {
+    background-image: url("../img/navigate_before_FILL0_wght400_GRAD0_opsz48.svg");
+  }
+}

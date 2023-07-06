@@ -12,15 +12,11 @@ interface Props {
   images: Image[];
   columnsCount: number;
   onChangeColumn: (column: number) => void;
-  currentPage: number;
-  onChangePage: (page: number) => void;
 }
 export const Gallery: FC<Props> = ({
   images,
   columnsCount,
   onChangeColumn,
-  currentPage,
-  onChangePage,
 }) => {
   const columnsCountBreakPoints = useMemo(() => {
     return {
@@ -52,10 +48,7 @@ export const Gallery: FC<Props> = ({
           </Masonry>
         </ResponsiveMasonry>
 
-        <Pagination
-          page={currentPage}
-          onChangePage={onChangePage}
-        />
+        <Pagination />
       </section>
     </div>
   );
