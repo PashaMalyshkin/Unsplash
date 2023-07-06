@@ -1,3 +1,28 @@
-.starter {
-  font-size: 18px;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html {
+  font-family: 'Roboto', sans-serif;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import "styles/utils/container";
+@import "styles/utils/vars";
+@import "styles/logo";
+@import "styles/header";
+@import "styles/search";
+@import "styles/gallery";
+@import "styles/modal";
+@import "styles/searching-page";
+
+.content {
+  height: fit-content;
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+}
+

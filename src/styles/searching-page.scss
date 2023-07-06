@@ -1,0 +1,13 @@
+.searching-page {
+  & .search {
+    width: 100%;
+    height: 60px;
+    background-color: #47485d;
+    padding: 10px 40px;
+
+    &__button {
+      background-color: #dcdada;
+      color: #47485d;
+    }
+  }
+}
