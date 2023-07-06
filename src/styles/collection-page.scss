@@ -1,0 +1,19 @@
+.collection-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__button {
+    padding: 10px 30px;
+    border-radius: 5px;
+    max-width: 200px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: #47485d;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+  }
+}

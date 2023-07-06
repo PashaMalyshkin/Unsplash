@@ -73,6 +73,11 @@ export const ImageModal: FC = () => {
           </Link>
         ))}
       </div>
+
+      <Link
+        to="/"
+        className="modal__close"
+      />
     </div>
   );
 };

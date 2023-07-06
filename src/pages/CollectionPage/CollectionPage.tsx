@@ -12,11 +12,11 @@ export const CollectionPage = () => {
   const page = searchParams.get('page') || '1';
   const [images, setImages] = useState<SearchResponse | null>(null);
   const [columnsCount, setColumnsCount] = useState(3);
+  const collectionName = pathname.split('/').pop() || '';
 
   const loadImages = async () => {
     try {
-      const tagName = pathname.split('/').pop() || '';
-      const searchedImages = await searchImages(tagName, +page);
+      const searchedImages = await searchImages(collectionName, +page);
 
       setImages(searchedImages);
     } catch {
@@ -37,14 +37,22 @@ export const CollectionPage = () => {
   }
 
   return (
-    <>
+    <div className="collection-page">
       <h1>Collection</h1>
+
+      <button
+        type="button"
+        className="collection-page__button"
+        title="Go Home"
+      >
+        Back to Home
+      </button>
 
       <Gallery
         images={images.results}
         columnsCount={columnsCount}
         onChangeColumn={setColumnsCount}
       />
-    </>
+    </div>
   );
 };
